@@ -12,11 +12,23 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+const allowedOrigins = [
+    "https://rohit-negi-ai-mentor.netlify.app",
+    "http://localhost:5173"
+];
+
 const corsOptions = {
-    // The origin will be set via an environment variable on Render
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", 
-    optionsSuccessStatus: 200
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    optionsSuccessStatus: 200,
+    credentials: true // If you're using cookies/auth headers
 };
+
 
 // Check for API Key
 if (!process.env.API_KEY) {
