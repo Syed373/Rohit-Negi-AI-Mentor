@@ -14,8 +14,8 @@ const ChatMessage = ({ sender, text }) => {
       </div>
       <div
         className={`max-w-2xl p-4 rounded-2xl ${isBot
-            ? 'bg-white dark:bg-gray-700 rounded-tl-none'
-            : 'bg-blue-500 text-white prose-strong:text-white rounded-br-none'
+            ? 'bg-white dark:bg-gray-300 rounded-tl-none'
+            : 'bg-blue-500 text-gray-100 prose-strong:text-gray-100 rounded-br-none'
           }`}
       >
         <ReactMarkdown
