@@ -1,13 +1,10 @@
-// backend/server.js
-
-// 1. Import Dependencies
 import express from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-// 2. Configure Environment & Initialize
-dotenv.config(); // Load environment variables from .env file
+
+dotenv.config(); 
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -26,11 +23,11 @@ const corsOptions = {
         }
     },
     optionsSuccessStatus: 200,
-    credentials: true // If you're using cookies/auth headers
+    credentials: true 
 };
 
 
-// Check for API Key
+
 if (!process.env.API_KEY) {
     console.error("Error: GEMINI_API_KEY is not defined in the .env file.");
     process.exit(1);
@@ -38,7 +35,6 @@ if (!process.env.API_KEY) {
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
-// The same powerful system instruction for the bot's persona
 const systemInstruction = {
     role: "system",
     parts: [{
@@ -80,14 +76,14 @@ Now respond **only** as per above behaviors and context mappings.
     }]
 };
 
-// 3. Middleware
-app.use(cors(corsOptions));        // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // Enable parsing of JSON request bodies
 
-// 4. Define API Route
+app.use(cors(corsOptions));        
+app.use(express.json()); 
+
+
 app.post('/api/chat', async (req, res) => {
     try {
-        const { message, history } = req.body; // Get message and history from the request
+        const { message, history } = req.body; 
 
         if (!message) {
             return res.status(400).json({ error: "Message is required." });
@@ -99,14 +95,14 @@ app.post('/api/chat', async (req, res) => {
         });
 
         const chat = model.startChat({
-            history: history || [], // Use provided history or start fresh
+            history: history || [], 
         });
 
         const result = await chat.sendMessage(message);
         const response = result.response;
         const text = response.text();
 
-        res.json({ reply: text }); // Send the AI's reply back to the frontend
+        res.json({ reply: text }); 
 
     } catch (error) {
         console.error("Error in /api/chat:", error);
@@ -115,7 +111,6 @@ app.post('/api/chat', async (req, res) => {
 });
 
 
-// 5. Start the Server
 app.listen(port, () => {
     console.log(`✅ Server is running on http://localhost:${port}`);
 });

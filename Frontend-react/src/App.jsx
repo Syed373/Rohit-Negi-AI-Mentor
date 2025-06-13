@@ -1,9 +1,7 @@
-// src/App.jsx
-
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
-import LandingPage from './components/LandingPage'; // NEW: Import the landing page
+import LandingPage from './components/LandingPage'; 
 import { Toaster } from 'react-hot-toast';
 
 const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || 'http://localhost:3000/api/chat';
@@ -14,20 +12,20 @@ function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [isChatting, setIsChatting] = useState(false); // NEW: State to control view
+  const [isChatting, setIsChatting] = useState(false); 
 
-  // Load chats and determine initial view
+  
   useEffect(() => {
     const savedChats = JSON.parse(localStorage.getItem('chats') || '[]');
     setChats(savedChats);
     const lastChatId = localStorage.getItem('lastChatId');
     if (lastChatId) {
       setCurrentChatId(lastChatId);
-      setIsChatting(true); // If there's a previous chat, go directly to the chat interface
+      setIsChatting(true); 
     }
   }, []);
 
-  // Theme effect
+  /* Theme effect */
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
@@ -40,7 +38,6 @@ function App() {
 
   // Save chats to localStorage
   useEffect(() => {
-    // Prevents saving the initial empty array on first load
     if (chats.length > 0) {
       localStorage.setItem('chats', JSON.stringify(chats));
     }
@@ -55,10 +52,9 @@ function App() {
     }
   }, [currentChatId]);
 
-  // NEW: Handler to transition from landing page to chat
   const handleStartChat = () => {
     setIsChatting(true);
-    handleNewChat(); // Start with a fresh, empty chat screen
+    handleNewChat(); 
   };
 
   const handleNewChat = () => {
@@ -78,7 +74,7 @@ function App() {
 
     if (!targetChatId) {
       targetChatId = `chat_${Date.now()}`;
-      // REFINED: More robust title creation
+      
       const newTitle = message.length > 30 ? message.substring(0, 30) + '...' : message;
       
       const newChat = {
@@ -148,7 +144,7 @@ function App() {
     <div className="flex h-screen font-sans bg-white dark:bg-gray-800 overflow-hidden">
       <Toaster position="bottom-center" reverseOrder={false} />
       
-      {/* NEW: Conditional rendering for Landing Page vs Chat Interface */}
+      
       {!isChatting ? (
         <LandingPage onStartChat={handleStartChat} />
       ) : (

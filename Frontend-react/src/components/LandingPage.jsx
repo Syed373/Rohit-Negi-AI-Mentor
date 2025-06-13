@@ -1,5 +1,3 @@
-// src/components/LandingPage.jsx
-
 import { FaArrowRight } from 'react-icons/fa';
 
 const LandingPage = ({ onStartChat }) => {

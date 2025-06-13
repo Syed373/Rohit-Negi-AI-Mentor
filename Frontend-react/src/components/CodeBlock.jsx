@@ -4,7 +4,7 @@ import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-jsx';
-// Add more languages as needed
+
 
 import { FaCopy } from 'react-icons/fa';
 import toast from 'react-hot-toast';
