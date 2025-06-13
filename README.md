@@ -4,6 +4,8 @@ A personalized AI chatbot that emulates the teaching style and persona of Rohit 
 
  
 ![Screenshot 2025-06-13 081604](https://github.com/user-attachments/assets/0b241723-423c-474f-80f6-6318d0d1c6ba)
+
+
 ![Screenshot 2025-06-13 081546](https://github.com/user-attachments/assets/2ac9e52d-11a5-44a2-827d-cb3c88879eae)
 
 
