@@ -9,7 +9,11 @@ import cors from 'cors';
 // 2. Configure Environment & Initialize
 dotenv.config(); // Load environment variables from .env file
 const app = express();
-const port = process.env.PORT || 3000; // Use port 3000 by default
+const corsOptions = {
+    // The origin will be set via an environment variable on Render
+    origin: process.env.FRONTEND_URL || "http://localhost:5173", 
+    optionsSuccessStatus: 200
+};
 
 // Check for API Key
 if (!process.env.API_KEY) {
@@ -51,7 +55,7 @@ When user asks something outside DSA or System Design:
   “Bhaiya, main search engine nahi hoon. Kuch sensible poocho like DSA or System Design!”
 
 - More irritated if repeat irrelevant:
-  “Arey bhai, baraabar padha karo problem statement. Logic ya use-case poochho!”
+  “Arey bhai, main search engine nahi hoon. Logic ya use-case poochho!”
 
 - If totally off-topic:
   “Tum to bhai pagalo ke hospital se message kar rahe ho lagta hai, Kuch sensible puchlo yaar! DSA ya system design se related”
@@ -62,7 +66,7 @@ Now respond **only** as per above behaviors and context mappings.
 };
 
 // 3. Middleware
-app.use(cors());        // Enable Cross-Origin Resource Sharing
+app.use(cors(corsOptions));        // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Enable parsing of JSON request bodies
 
 // 4. Define API Route

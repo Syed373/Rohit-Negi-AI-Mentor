@@ -6,7 +6,7 @@ import ChatArea from './components/ChatArea';
 import LandingPage from './components/LandingPage'; // NEW: Import the landing page
 import { Toaster } from 'react-hot-toast';
 
-const API_ENDPOINT = 'http://localhost:3000/api/chat';
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || 'http://localhost:3000/api/chat';
 
 function App() {
   const [chats, setChats] = useState([]);
