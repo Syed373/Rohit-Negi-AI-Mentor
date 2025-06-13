@@ -9,6 +9,9 @@ import cors from 'cors';
 // 2. Configure Environment & Initialize
 dotenv.config(); // Load environment variables from .env file
 const app = express();
+
+const port = process.env.PORT || 3000;
+
 const corsOptions = {
     // The origin will be set via an environment variable on Render
     origin: process.env.FRONTEND_URL || "http://localhost:5173", 
