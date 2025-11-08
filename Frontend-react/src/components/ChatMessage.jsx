@@ -7,7 +7,7 @@ const ChatMessage = ({ sender, text }) => {
   return (
     <div className={`flex gap-4 my-4 ${!isBot ? 'flex-row-reverse' : ''}`}>
       <div
-        className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-white ${isBot ? 'bg-gradient-to-br from-blue-500 to-purple-600' : 'bg-gray-500'
+        className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-white ${isBot ? 'bg-blue-600' : 'bg-gray-500'
           }`}
       >
         {isBot ? 'RN' : 'You'}
