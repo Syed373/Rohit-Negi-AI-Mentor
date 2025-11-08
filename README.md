@@ -116,29 +116,31 @@ You will need two separate terminals to run both the backend and frontend server
 
 ## 📁 Project Structure
 
+```
 rohit-negi-ai-mentor/
 ├── backend/
-│ ├── ChatBot.js # Express server and API logic
-│ ├── .env # Environment variables (private)
-│ └── package.json
+│   ├── ChatBot.js # Express server and API logic
+│   ├── .env # Environment variables (private)
+│   └── package.json
 │
 ├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── components/ # Reusable React components
-│ │ │ ├── ChatArea.jsx
-│ │ │ ├── ChatMessage.jsx
-│ │ │ ├── CodeBlock.jsx
-│ │ │ ├── LandingPage.jsx
-│ │ │ ├── LoadingMessage.jsx
-│ │ │ ├── Sidebar.jsx
-│ │ │ └── WelcomeScreen.jsx
-│ │ ├── App.jsx # Main application component
-│ │ └── index.css # Tailwind CSS setup
-│ ├── index.html
-│ └── package.json
+│   ├── public/
+│   ├── src/
+│   │   ├── components/ # Reusable React components
+│   │   │   ├── ChatArea.jsx
+│   │   │   ├── ChatMessage.jsx
+│   │   │   ├── CodeBlock.jsx
+│   │   │   ├── LandingPage.jsx
+│   │   │   ├── LoadingMessage.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── WelcomeScreen.jsx
+│   │   ├── App.jsx # Main application component
+│   │   └── index.css # Tailwind CSS setup
+│   ├── index.html
+│   └── package.json
 │
 └── README.md
+```
 
 ## 🙏 Acknowledgements
 
