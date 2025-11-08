@@ -7,7 +7,7 @@ const WelcomeScreen = () => {
       <h1 className="text-4xl font-bold bg-blue-500 inline-block text-transparent bg-clip-text p-5 mb-2">
         Rohit Negi AI Mentor
       </h1>
-      <p className="text-2xl font-bold text-gray-500 dark:text-gray-400">
+      <p className="text-lg font-bold text-gray-500 dark:text-gray-400">
         Hello Coder Army! Kaise ho aap sabhi
       </p>
     </div>

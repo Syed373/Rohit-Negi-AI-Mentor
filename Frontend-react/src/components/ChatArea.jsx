@@ -73,7 +73,7 @@ const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
           RN
         </div>
         <div className="flex items-center gap-4 justify-center flex-1">
-            <h2 className="text-4xl font-semibold bg-blue-500 inline-block text-transparent bg-clip-text p-1">
+            <h2 className="text-2xl font-semibold bg-blue-500 inline-block text-transparent bg-clip-text p-1">
                 Rohit Negi AI Mentor
             </h2>
         </div>
