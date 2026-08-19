@@ -28,12 +28,12 @@ const CodeBlock = ({ language, code }) => {
   };
 
   return (
-    <div className="my-6 rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-[#fafafa] dark:bg-[#111111] shadow-sm group">
-      <div className="flex justify-between items-center px-4 py-2 bg-gray-100 dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-white/5 transition-colors">
-        <span className="text-gray-500 dark:text-gray-400 text-xs font-mono font-medium">{language || 'code'}</span>
+    <div className="my-6 rounded-xl overflow-hidden border border-gray-800 bg-[#111111] shadow-sm group">
+      <div className="flex justify-between items-center px-4 py-2 bg-[#1a1a1a] border-b border-gray-800 transition-colors">
+        <span className="text-gray-400 text-xs font-mono font-medium">{language || 'code'}</span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 p-1.5 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="flex items-center gap-1.5 p-1.5 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
           title="Copy code"
         >
           {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}

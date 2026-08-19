@@ -1,4 +1,7 @@
 import ReactMarkdown from 'react-markdown'
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import CodeBlock from './CodeBlock';
 import { Icon } from './Logo';
 
@@ -20,6 +23,8 @@ const ChatMessage = ({ sender, text }) => {
         }`}
       >
         <ReactMarkdown
+          remarkPlugins={[remarkMath]}
+          rehypePlugins={[rehypeKatex]}
           components={{
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || '');
