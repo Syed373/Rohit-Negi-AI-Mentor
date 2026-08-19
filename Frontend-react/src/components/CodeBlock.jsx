@@ -6,7 +6,7 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-jsx';
 
 
-import { FaCopy } from 'react-icons/fa';
+import { FaCopy } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 
 const CodeBlock = ({ language, code }) => {
@@ -20,20 +20,23 @@ const CodeBlock = ({ language, code }) => {
   };
 
   return (
-    <div className="relative my-4 rounded-lg bg-[#2d2d2d] text-sm">
-      <div className="flex justify-between items-center px-4 py-2 bg-gray-700/50 rounded-t-lg">
-        <span className="text-gray-300 font-semibold">{language || 'code'}</span>
+    <div className="my-4 rounded-xl overflow-hidden border border-gray-700 bg-[#1e1e1e] shadow-sm">
+      <div className="flex justify-between items-center px-4 py-2 bg-[#2d2d2d] text-gray-400 text-xs font-mono uppercase border-b border-gray-700">
+        <span>{language || 'code'}</span>
+        <button
+          onClick={handleCopy}
+          className="flex items-center gap-1.5 p-1.5 hover:bg-gray-600 rounded-md text-gray-400 hover:text-white transition-colors"
+          title="Copy code"
+        >
+          <FaCopy size={14} />
+          <span>Copy</span>
+        </button>
       </div>
-      <pre className="p-4 overflow-x-auto">
-        <code className={`language-${language}`}>{code}</code>
-      </pre>
-      <button
-        onClick={handleCopy}
-        className="absolute top-1 right-2 p-2 bg-gray-900 hover:bg-gray-500/70 rounded-md text-gray-300 transition-colors"
-        title="Copy code"
-      >
-        <FaCopy />
-      </button>
+      <div className="p-4 overflow-x-auto text-[13px] leading-relaxed">
+        <pre className="!m-0 !p-0 !bg-transparent">
+          <code className={`language-${language}`}>{code}</code>
+        </pre>
+      </div>
     </div>
   );
 };

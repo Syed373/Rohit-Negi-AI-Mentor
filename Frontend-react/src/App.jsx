@@ -156,6 +156,8 @@ function App() {
             currentChatId={currentChatId} 
             onNewChat={handleNewChat} 
             onLoadChat={handleLoadChat}
+            theme={theme}
+            onToggleTheme={toggleTheme}
           />
           
           <ChatArea 

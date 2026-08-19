@@ -1,6 +1,6 @@
-# Rohit Negi AI Mentor 🤖
+# GuruAI 🤖
 
-A personalized AI chatbot that emulates the teaching style and persona of Rohit Negi, founder of Coder Army. This application is designed to be a friendly, bilingual mentor for students learning Data Structures & Algorithms (DSA) and System Design.
+A personalized AI chatbot that emulates the teaching style and persona of a friendly, bilingual mentor for students learning Data Structures & Algorithms (DSA) and System Design.
 
 
 
@@ -18,13 +18,13 @@ A personalized AI chatbot that emulates the teaching style and persona of Rohit 
 
 ## 🌟 About The Project
 
-This project combines a modern React frontend with a Node.js/Express backend powered by the Google Gemini API. The core of the application is the AI's persona, which is carefully crafted through a detailed system prompt to mimic Rohit Negi's unique way of speaking—a mix of Hindi and English, using his signature phrases and emojis.
+This project combines a modern React frontend with a Node.js/Express backend powered by the Google Gemini API. The core of the application is the AI's persona, which is carefully crafted through a detailed system prompt to mimic a friendly mentor's unique way of speaking—a mix of Hindi and English, using encouraging phrases and emojis.
 
 The goal is to provide a more engaging and relatable learning experience than a generic chatbot.
 
 ## ✨ Features
 
--   **🤖 Authentic AI Persona**: The bot responds in Rohit Negi's voice—friendly, encouraging, and bilingual (Hindi/English).
+-   **🤖 Authentic AI Persona**: The bot responds in a friendly, encouraging, and bilingual (Hindi/English) voice.
 -   **🚀 Landing Page**: A clean entry point to start a new chat session.
 -   **💬 Modern Chat Interface**: A responsive and intuitive chat UI built with React and Tailwind CSS.
 -   **📜 Chat History**: Conversations are saved to `localStorage`, allowing you to pick up where you left off.
@@ -71,7 +71,7 @@ Follow these instructions to get a local copy up and running.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/Syed373/Rohit-Negi-AI-Mentor.git
+    git clone https://github.com/Syed373/GuruAI.git
     cd rohit-negi-ai-mentor
     ```
 
@@ -117,7 +117,7 @@ You will need two separate terminals to run both the backend and frontend server
 ## 📁 Project Structure
 
 ```
-rohit-negi-ai-mentor/
+guru-ai/
 ├── backend/
 │   ├── ChatBot.js # Express server and API logic
 │   ├── .env # Environment variables (private)
@@ -144,6 +144,6 @@ rohit-negi-ai-mentor/
 
 ## 🙏 Acknowledgements
 
--   Inspiration and persona based on the incredible work of **Rohit Negi** and **Coder Army**.
+-   Inspiration and persona based on a dedicated DSA and System Design mentor.
 -   Powered by **Google Gemini**.
 -   Icons provided by **React Icons**.

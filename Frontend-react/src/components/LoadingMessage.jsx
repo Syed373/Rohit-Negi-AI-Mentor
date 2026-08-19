@@ -1,16 +1,17 @@
 import React from 'react';
+import { Icon } from './Logo';
 
 const LoadingMessage = () => {
   return (
-    <div className="flex gap-4 my-4">
-      <div className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-white bg-blue-600">
-        RN
+    <div className="flex gap-4 my-2">
+      <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[var(--accent)] text-white shadow-sm overflow-hidden p-1">
+        <Icon className="w-full h-full" />
       </div>
-      <div className="max-w-2xl p-4 rounded-2xl bg-white dark:bg-gray-700 rounded-tl-none flex items-center">
-        <div className="flex space-x-1">
-          <span className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-          <span className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-          <span className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce"></span>
+      <div className="p-3 rounded-2xl flex items-center h-10">
+        <div className="flex space-x-1.5">
+          <span className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full animate-pulse [animation-delay:-0.3s]"></span>
+          <span className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full animate-pulse [animation-delay:-0.15s]"></span>
+          <span className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full animate-pulse"></span>
         </div>
       </div>
     </div>
