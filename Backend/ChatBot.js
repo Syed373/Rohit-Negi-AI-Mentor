@@ -4,13 +4,13 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 
-dotenv.config(); 
+dotenv.config();
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
-    "https://rohit-negi-ai-mentor.netlify.app",
+    "https://ask-guruai.netlify.app/",
     "http://localhost:5173"
 ];
 
@@ -23,7 +23,7 @@ const corsOptions = {
         }
     },
     optionsSuccessStatus: 200,
-    credentials: true 
+    credentials: true
 };
 
 
@@ -149,32 +149,32 @@ Out‑of‑scope: “Bhai mai thuje kitni baar bolu...., DSA ya system design ya
 };
 
 
-app.use(cors(corsOptions));        
-app.use(express.json()); 
+app.use(cors(corsOptions));
+app.use(express.json());
 
 
 app.post('/api/chat', async (req, res) => {
     try {
-        const { message, history } = req.body; 
+        const { message, history } = req.body;
 
         if (!message) {
             return res.status(400).json({ error: "Message is required." });
         }
-        
+
         const model = genAI.getGenerativeModel({
             model: "gemini-2.0-flash",
             systemInstruction: systemInstruction.parts[0].text
         });
 
         const chat = model.startChat({
-            history: history || [], 
+            history: history || [],
         });
 
         const result = await chat.sendMessage(message);
         const response = result.response;
         const text = response.text();
 
-        res.json({ reply: text }); 
+        res.json({ reply: text });
 
     } catch (error) {
         console.error("Error in /api/chat:", error);
