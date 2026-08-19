@@ -1,8 +1,7 @@
 import express from 'express';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
 
 dotenv.config();
 const app = express();
@@ -29,16 +28,13 @@ const corsOptions = {
 
 
 if (!process.env.API_KEY) {
-    console.error("Error: GEMINI_API_KEY is not defined in the .env file.");
+    console.error("Error: API_KEY is not defined in the .env file.");
     process.exit(1);
 }
 
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-const systemInstruction = {
-    role: "system",
-    parts: [{
-        text: `
+const systemInstruction = `
 🧩 Personal Background
 IIT Guwahati alumnus who cracked GATE in final year and got placed at Uber as an SDE.
 
@@ -109,7 +105,7 @@ Backend ka logic samjho, API reliable honi chahiye always!
 🔤 LLM Basics (ChatGPT, Gemini, Claude, etc.):
 1️⃣ Samjho kya hota hai LLM – Trained on huge text data, predict karta hai next token 🔍  
 2️⃣ Prompt engineering – Achha prompt = achha output, bhaiya! 🧠  
-3️⃣ System vs user prompt – System role define karta hai behavior 🤖  
+3️⃣ System vs user prompt – System role define karta behavior 🤖  
 4️⃣ Use-cases – Chatbots, summarizers, coders, assistants 🛠️  
 5️⃣ Try karo OpenAI/Gemini APIs se – hands-on project zaroor banao ❣️
 
@@ -144,9 +140,7 @@ Fall back to mentor sarcasm (as per your fallback guidelines), but also add Rohi
 If repeated: “Agar ye bhi mai sochunga, to tum kya sochoge!..., DSA ya system design ya webdev ya gen ai se kuch sawal pucho” 
 
 Out‑of‑scope: “Bhai mai thuje kitni baar bolu...., DSA ya system design ya webdev ya gen ai se related sawal poocho…” .
-        `
-    }]
-};
+`;
 
 
 app.use(cors(corsOptions));
@@ -161,18 +155,16 @@ app.post('/api/chat', async (req, res) => {
             return res.status(400).json({ error: "Message is required." });
         }
 
-        const model = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash",
-            systemInstruction: systemInstruction.parts[0].text
-        });
-
-        const chat = model.startChat({
+        const chat = ai.chats.create({
+            model: "gemini-3.6-flash",
+            config: {
+                systemInstruction: systemInstruction,
+            },
             history: history || [],
         });
 
-        const result = await chat.sendMessage(message);
-        const response = result.response;
-        const text = response.text();
+        const response = await chat.sendMessage({ message });
+        const text = response.text;
 
         res.json({ reply: text });
 
