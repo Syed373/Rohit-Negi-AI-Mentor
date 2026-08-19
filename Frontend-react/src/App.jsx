@@ -61,6 +61,11 @@ function App() {
     setCurrentChatId(null);
   };
 
+  const handleGoHome = () => {
+    setIsChatting(false);
+    setCurrentChatId(null);
+  };
+
   const handleLoadChat = (chatId) => {
     setCurrentChatId(chatId);
   };
@@ -158,6 +163,7 @@ function App() {
             onLoadChat={handleLoadChat}
             theme={theme}
             onToggleTheme={toggleTheme}
+            onGoHome={handleGoHome}
           />
           
           <ChatArea 

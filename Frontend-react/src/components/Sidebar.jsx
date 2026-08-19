@@ -1,7 +1,7 @@
 import { Plus, MessageSquare, PanelLeftClose, PanelLeft, Sun, Moon } from 'lucide-react';
 import Logo from './Logo';
 
-const Sidebar = ({ isSidebarOpen, onToggleSidebar, chats, currentChatId, onNewChat, onLoadChat, theme, onToggleTheme }) => {
+const Sidebar = ({ isSidebarOpen, onToggleSidebar, chats, currentChatId, onNewChat, onLoadChat, theme, onToggleTheme, onGoHome }) => {
   return (
     <>
       {/* Mobile overlay */}
@@ -21,7 +21,13 @@ const Sidebar = ({ isSidebarOpen, onToggleSidebar, chats, currentChatId, onNewCh
       >
         <div className="flex items-center justify-between p-4 h-[72px] flex-shrink-0">
           <div className={`overflow-hidden transition-all duration-300 ${isSidebarOpen ? 'w-auto opacity-100' : 'w-0 opacity-0 md:w-auto md:opacity-100'}`}>
-            <Logo showText={isSidebarOpen} className={isSidebarOpen ? "h-7" : "h-7 justify-center"} />
+            <button
+              onClick={onGoHome}
+              title="Go to home"
+              className="focus:outline-none rounded-lg"
+            >
+              <Logo showText={isSidebarOpen} className={isSidebarOpen ? "h-7" : "h-7 justify-center"} />
+            </button>
           </div>
           <button
             onClick={onToggleSidebar}
