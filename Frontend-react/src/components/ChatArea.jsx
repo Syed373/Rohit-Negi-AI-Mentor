@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import ChatMessage from './ChatMessage';
 import WelcomeScreen from './WelcomeScreen';
 import LoadingMessage from './LoadingMessage';
-import { FaPaperPlane, FaMicrophone, FaBars } from 'react-icons/fa6';
+import { Send, Mic } from 'lucide-react';
 import Logo from './Logo';
 
 const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
@@ -81,9 +81,9 @@ const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
   };
 
   return (
-    <main className="flex-1 flex flex-col bg-white dark:bg-gray-800 min-w-0 relative h-full">
+    <main className="flex-1 flex flex-col bg-white dark:bg-[#0a0a0a] min-w-0 relative h-full">
       {/* Mobile Header */}
-      <div className="md:hidden flex justify-center items-center p-4 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-10">
+      <div className="md:hidden flex justify-center items-center p-4 border-b border-gray-100 dark:border-white/10 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md sticky top-0 z-10">
         <Logo showText={true} className="h-6" />
       </div>
       
@@ -95,18 +95,18 @@ const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
                   <ChatMessage key={index} sender={msg.sender} text={msg.text} />
               ))
           ) : (
-              <WelcomeScreen />
+              <WelcomeScreen onSendMessage={onSendMessage} />
           )}
           {isLoading && <LoadingMessage />}
         </div>
       </div>
 
       {/* Input Form */}
-      <div className="p-4 bg-gradient-to-t from-white via-white dark:from-gray-800 dark:via-gray-800 to-transparent pt-6">
-        <div className="max-w-3xl mx-auto w-full relative">
+      <div className="p-4 bg-gradient-to-t from-white via-white dark:from-[#0a0a0a] dark:via-[#0a0a0a] to-transparent pt-6">
+        <div className="max-w-3xl mx-auto w-full relative group">
           <form 
             onSubmit={handleSubmit} 
-            className="flex items-end gap-2 bg-gray-50 dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-sm focus-within:ring-1 focus-within:ring-[var(--accent)] focus-within:border-[var(--accent)] transition-all overflow-hidden p-2 pl-4"
+            className="flex items-end gap-2 bg-white dark:bg-[#1a1a1a] rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm focus-within:ring-4 focus-within:ring-[var(--accent)]/10 focus-within:border-[var(--accent)]/50 transition-all duration-300 overflow-hidden p-2 pl-4"
           >
             <textarea
               ref={textareaRef}
@@ -114,7 +114,7 @@ const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={isLoading ? "GuruAI is thinking..." : "Ask GuruAI anything..."}
-              className="w-full bg-transparent focus:outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 disabled:opacity-50 resize-none py-3 max-h-[200px] leading-relaxed"
+              className="w-full bg-transparent focus:outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 resize-none py-3 max-h-[200px] leading-relaxed"
               rows={1}
             />
             <div className="flex items-center gap-1 self-end pb-1 pr-1">
@@ -122,22 +122,22 @@ const ChatArea = ({ chat, onSendMessage, theme, onToggleTheme, isLoading }) => {
                 type="button" 
                 onClick={handleMicClick} 
                 disabled={isLoading} 
-                className={`p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${isRecording ? 'text-[var(--accent)] bg-[var(--accent)]/10 animate-pulse' : ''}`}
+                className={`p-2.5 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${isRecording ? 'text-[var(--accent)] bg-[var(--accent)]/10 animate-pulse' : ''}`}
                 title="Voice Input"
               >
-                <FaMicrophone size={18}/>
+                <Mic size={20}/>
               </button>
               <button 
                 type="submit" 
-                className={`p-2 rounded-xl transition-colors disabled:cursor-not-allowed flex items-center justify-center ${input.trim() ? 'bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)]' : 'bg-gray-200 text-gray-400 dark:bg-gray-600 dark:text-gray-500'}`} 
+                className={`p-2.5 rounded-xl transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center ${input.trim() ? 'bg-[var(--accent)] text-white shadow-lg shadow-[var(--accent)]/20 hover:bg-[var(--accent-hover)] hover:-translate-y-0.5' : 'bg-gray-100 text-gray-400 dark:bg-white/5 dark:text-gray-600'}`} 
                 disabled={!input.trim()}
                 title="Send Message"
               >
-                <FaPaperPlane size={18}/>
+                <Send size={20}/>
               </button>
             </div>
           </form>
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400 mt-3 mb-1">
+          <div className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4 mb-2 font-medium">
             GuruAI can make mistakes. Consider verifying important information.
           </div>
         </div>
